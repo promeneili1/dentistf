@@ -1,1 +1,24 @@
-<p>appointments works!</p>
+<h2>Appointments for JMBG: {{ jmbg }}</h2>
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+
+<!-- Dodato input polje za unos JMBG-a -->
+<label>Enter JMBG:</label>
+<input type="text" [(ngModel)]="jmbgInput" name="jmbgInput" required>
+
+<!-- Izmenjen taster za Load Appointments -->
+<button (click)="loadAppointmentsByJMBG(jmbgInput)">Load Appointments</button>
+
+<ul>
+  <li *ngFor="let appointment of appointments">
+    {{ appointment.startTime }} - {{ appointment.endTime }} 
+    <button *ngIf="appointment.id !== undefined" (click)="cancelAppointment(appointment.id)">Delete</button>
+  </li>
+</ul>
+
+<h3>Create New Appointment</h3>
+<form (ngSubmit)="createAppointment()">
+  <label>Date and Time:</label>
+  <input type="datetime-local" [(ngModel)]="newAppointment.startTime" name="startTime" required>
+  <input type="datetime-local" [(ngModel)]="newAppointment.endTime" name="endTime" required>
+  <button type="submit">Create</button>
+</form>
