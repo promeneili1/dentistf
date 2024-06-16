@@ -1,0 +1,12 @@
+<h2>Patient Login</h2>
+<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
+<form (ngSubmit)="login()">
+  <label>JMBG:</label>
+  <input type="text" [(ngModel)]="jmbg" name="jmbg" required>
+  <button type="submit">Login</button>
+</form>
+<div *ngIf="patient">
+  <p>Name: {{ patient.name }}</p>
+  <p>Phone Number: {{ patient.phoneNumber }}</p>
+  <p>JMBG: {{ patient.JMBG }}</p>
+</div>
