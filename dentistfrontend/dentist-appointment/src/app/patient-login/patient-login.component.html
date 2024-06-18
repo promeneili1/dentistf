@@ -4,10 +4,12 @@
   <label>JMBG:</label>
   <input type="text" [(ngModel)]="jmbg" name="jmbg" required>
   <button type="submit">Login</button>
+  <button routerLink="/loginD">Dentist Login</button>
 </form>
 <div *ngIf="patient">
   <p>Name: {{ patient.name }}</p>
   <p>Phone Number: {{ patient.phoneNumber }}</p>
   <p>JMBG: {{ patient.JMBG }}</p>
+  
   <button routerLink="/appointments">View Appointments</button>
 </div>

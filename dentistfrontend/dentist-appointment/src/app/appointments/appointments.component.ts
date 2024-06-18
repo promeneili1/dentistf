@@ -17,7 +17,8 @@ export class AppointmentComponent implements OnInit {
     reason: '',
     endTime: undefined,
     startTime: undefined,
-    id: undefined
+    id: undefined,
+    
   };
   
   errorMessage: string | undefined;
@@ -50,6 +51,7 @@ export class AppointmentComponent implements OnInit {
         this.newAppointment = {
           id: undefined, 
           startTime: '',
+          
           endTime: '',
           patientJMBG: '',
           date: '',

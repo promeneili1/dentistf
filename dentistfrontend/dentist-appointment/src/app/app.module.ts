@@ -8,12 +8,16 @@ import { AppointmentFormComponent } from './appointment-form/appointment-form.co
 import { AppointmentListComponent } from './appointment-list/appointment-list.component';
 import { AppointmentComponent } from './appointments/appointments.component';
 import { PatientLoginComponent } from './patient-login/patient-login.component';
+import { LoginDentistComponent } from './login-dentist/login-dentist.component';
+import { DentistAppointmentsComponent } from './dentist-appointments/dentist-appointments.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PatientLoginComponent,
     AppointmentComponent,
+    LoginDentistComponent,
+    DentistAppointmentsComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,5 +6,7 @@ export interface Appointment {
     date: string;
     time: string;
     reason: string;
+    
+    
   }
   

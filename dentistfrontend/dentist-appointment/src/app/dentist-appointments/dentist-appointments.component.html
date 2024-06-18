@@ -1,0 +1,14 @@
+<div class="container">
+    <h2>Appointments</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let appointment of appointments">
+        <p>Start Time: {{ appointment.startTime | date:'short' }}</p>
+        <p>End Time: {{ appointment.endTime | date:'short' }}</p>
+        <p>Patient JMBG: {{ appointment.patientJMBG }}</p>
+        <p *ngIf="patients[appointment.patientJMBG]">Patient Phone: {{ patients[appointment.patientJMBG]['phoneNumber'] }}</p>
+  
+        <button *ngIf="appointment.id !== undefined" class="btn btn-danger" (click)="cancelAppointment(appointment.id!)">Cancel</button>
+      </li>
+    </ul>
+  </div>
+  
