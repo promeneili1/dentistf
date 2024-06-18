@@ -22,7 +22,7 @@ export class AppointmentComponent implements OnInit {
   };
   
   errorMessage: string | undefined;
-  jmbgInput: string = ''; // Dodato svojstvo za unos JMBG-a
+  jmbgInput: string = ''; 
 
 
   constructor(private appointmentService: AppointmentService) { }
@@ -44,7 +44,7 @@ export class AppointmentComponent implements OnInit {
   }
 
   createAppointment(): void {
-    this.newAppointment.patientJMBG = this.jmbgInput; // Koristi jmbgInput umesto jmbg
+    this.newAppointment.patientJMBG = this.jmbgInput; 
     this.appointmentService.createAppointment(this.newAppointment).subscribe(
       appointment => {
         this.appointments.push(appointment);
@@ -70,14 +70,14 @@ export class AppointmentComponent implements OnInit {
   cancelAppointment(id: number): void {
     this.appointmentService.cancelAppointment(id).subscribe(
       () => {
-        // Successful deletion
+        
         this.appointments = this.appointments.filter(app => app.id !== id);
-        this.errorMessage = ''; // Clear any previous error message
+        this.errorMessage = ''; 
       },
       error => {
-        // Error handling
+        
         if (error.status === 400) {
-          // Check if it's a 400 Bad Request error
+          
           const errorMessage = error.error.message || 'Error cancelling appointment.';
           this.errorMessage = errorMessage;
         } else {

@@ -20,7 +20,7 @@ export class PatientLoginComponent {
 
   constructor(
     private patientService: PatientService,
-    private appointmentService: AppointmentService // Injektiraj AppointmentService
+    private appointmentService: AppointmentService 
   ) { }
 
   login(): void {
@@ -28,7 +28,7 @@ export class PatientLoginComponent {
       patient => {
         this.patient = patient;
         this.errorMessage = '';
-         // Poziv metode za učitavanje termina
+         
       },
       error => {
         console.error('Error logging in patient', error);

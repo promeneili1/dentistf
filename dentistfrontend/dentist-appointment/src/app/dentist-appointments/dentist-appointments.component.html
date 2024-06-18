@@ -1,14 +1,33 @@
 <div class="container">
-    <h2>Appointments</h2>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let appointment of appointments">
-        <p>Start Time: {{ appointment.startTime | date:'short' }}</p>
-        <p>End Time: {{ appointment.endTime | date:'short' }}</p>
-        <p>Patient JMBG: {{ appointment.patientJMBG }}</p>
-        <p *ngIf="patients[appointment.patientJMBG]">Patient Phone: {{ patients[appointment.patientJMBG]['phoneNumber'] }}</p>
-  
-        <button *ngIf="appointment.id !== undefined" class="btn btn-danger" (click)="cancelAppointment(appointment.id!)">Cancel</button>
-      </li>
-    </ul>
+  <h2 style="text-align: center;">Appointments</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let appointment of appointments" style="margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+      <div style="margin-bottom: 10px;">
+        <p><strong>Start Time:</strong> {{ appointment.startTime | date:'short' }}</p>
+        <p><strong>End Time:</strong> {{ appointment.endTime | date:'short' }}</p>
+        <p><strong>Patient JMBG:</strong> {{ appointment.patientJMBG }}</p>
+        <p *ngIf="patients[appointment.patientJMBG]"><strong>Patient Phone:</strong> {{ patients[appointment.patientJMBG].phoneNumber }}</p>
+      </div>
+      <button *ngIf="appointment.id !== undefined" class="btn btn-danger" (click)="cancelAppointment(appointment.id!)" style="padding: 5px 10px;">Cancel</button>
+    </li>
+  </ul>
+
+  <div style="margin-top: 20px;">
+    <h2 style="text-align: center;">Create New Appointment</h2>
+    <form (ngSubmit)="createAppointmentt()">
+      <div class="form-group">
+        <label for="startTime">Start Time:</label>
+        <input type="datetime-local" id="startTime" class="form-control" [(ngModel)]="newAppointment.startTime" name="startTime" required style="padding: 10px; font-size: 16px;">
+      </div>
+      <div class="form-group">
+        <label for="endTime">End Time:</label>
+        <input type="datetime-local" id="endTime" class="form-control" [(ngModel)]="newAppointment.endTime" name="endTime" required style="padding: 10px; font-size: 16px;">
+      </div>
+      <div class="form-group">
+        <label for="patientJMBG">Patient JMBG:</label>
+        <input type="text" id="patientJMBG" class="form-control" [(ngModel)]="newAppointment.patientJMBG" name="patientJMBG" required style="padding: 10px; font-size: 16px;">
+      </div>
+      <button type="submit" class="btn btn-primary" style="padding: 10px 20px; font-size: 16px;">Create Appointment</button>
+    </form>
   </div>
-  
+</div>

@@ -1,15 +1,16 @@
-<h2>Patient Login</h2>
-<div *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</div>
-<form (ngSubmit)="login()">
-  <label>JMBG:</label>
-  <input type="text" [(ngModel)]="jmbg" name="jmbg" required>
-  <button type="submit">Login</button>
-  <button routerLink="/loginD">Dentist Login</button>
+<h2 style="text-align: center;">Patient Login</h2>
+<div *ngIf="errorMessage" style="color: red; text-align: center; margin-bottom: 10px;">{{ errorMessage }}</div>
+<form (ngSubmit)="login()" style="text-align: center;">
+  <label style="display: block; margin-bottom: 10px;">JMBG:</label>
+  <input type="text" [(ngModel)]="jmbg" name="jmbg" required style="padding: 5px; font-size: 16px;">
+  <br><br>
+  <button type="submit" style="background-color: blue; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer;">Login</button>
+  <button routerLink="/loginD" style="background-color: blue; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer; margin-left: 10px;">Dentist Login</button>
 </form>
-<div *ngIf="patient">
+<div *ngIf="patient" style="text-align: center; margin-top: 20px;">
   <p>Name: {{ patient.name }}</p>
   <p>Phone Number: {{ patient.phoneNumber }}</p>
   <p>JMBG: {{ patient.JMBG }}</p>
   
-  <button routerLink="/appointments">View Appointments</button>
+  <button routerLink="/appointments" style="background-color: blue; color: white; padding: 10px 20px; font-size: 16px; border: none; cursor: pointer; margin-top: 10px;">View Appointments</button>
 </div>

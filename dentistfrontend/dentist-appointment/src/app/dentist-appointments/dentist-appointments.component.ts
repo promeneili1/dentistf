@@ -12,6 +12,16 @@ export class DentistAppointmentsComponent implements OnInit {
   appointments: Appointment[] = [];
   patients: { [key: string]: Patient } = {}; 
 
+  newAppointment: Appointment = {
+    startTime: '',
+    endTime: '',
+    patientJMBG: '',
+    date: '',
+    time: '',
+    reason: ''
+  };
+  
+
   constructor(private dentistService: DentistService) { }
 
   ngOnInit(): void {
@@ -22,7 +32,7 @@ export class DentistAppointmentsComponent implements OnInit {
     this.dentistService.getAllAppointments().subscribe(
       (appointments) => {
         this.appointments = appointments;
-        this.fetchPatients(); // Pozivamo metod za dohvatanje pacijenata nakon što dobijemo termine
+        this.fetchPatients(); 
       },
       (error: any) => {
         console.error('Failed to fetch appointments:', error);
@@ -35,7 +45,7 @@ export class DentistAppointmentsComponent implements OnInit {
       this.dentistService.getPatientByJmbg(appointment.patientJMBG).subscribe(
         (patient: Patient) => {
           this.patients[patient.JMBG] = patient;
-          console.log('Fetched patient:', patient); // Dodajte ovu liniju za proveru
+          console.log('Fetched patient:', patient); 
         },
         (error: any) => {
           console.error(`Failed to fetch patient for JMBG ${appointment.patientJMBG}:`, error);
@@ -52,4 +62,25 @@ export class DentistAppointmentsComponent implements OnInit {
       (error: any) => console.error('Failed to cancel appointment', error)
     );
   }
+
+  createAppointmentt(): void {
+    this.dentistService.createAppointmentt(this.newAppointment).subscribe(
+      (appointment) => {
+        console.log('Appointment created:', appointment);
+        this.fetchAppointments();
+        this.newAppointment = {
+          startTime: '',
+          endTime: '',
+          patientJMBG: '',
+          date: '',
+          time: '',
+          reason: ''
+        }; 
+      },
+      (error: any) => {
+        console.error('Failed to create appointment', error);
+      }
+    );
+  }
+  
 }

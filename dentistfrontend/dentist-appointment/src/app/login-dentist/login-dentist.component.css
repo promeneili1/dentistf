@@ -1,0 +1,56 @@
+/* Global styles or component-specific styles */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Centriranje po horizontali i postavljanje na vrh po vertikali */
+    height: 100vh; /* Koristi celu visinu ekrana */
+  }
+  
+  .login-container {
+    width: 400px; /* Fiksna širina za formular */
+    background-color: #f0f0f0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px; /* Margina od 50px od vrha ekrana */
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+  }
+  
+  input[type="text"], input[type="password"], button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: blue;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: darkblue;
+  }
+  
+  /* Adjustments for smaller screens if necessary */
+  @media (max-width: 768px) {
+    .login-container {
+      width: 80%; /* Prilagođavanje širine za manje ekrane */
+    }
+  }
+  
